@@ -10,17 +10,10 @@ display.contrast(15)
 display.clear()
 
 
-# print("Loading fonts, please wait.")
-# font = XglcdFont('fonts/Bally7x9.c', 7, 9)
 ffont = XglcdFont('fonts/FixedFont5x8.c', 5, 8)
-# # font = XglcdFont('fonts/Wendy7x8.c', 7, 8)
 font = XglcdFont('fonts/Unispace12x24.c', 12, 24)
-# print("Fonts loaded.")
 
-# display.draw_text(0, 30, 'font v. 2.1', font, color565(255, 255, 255))
-# display.draw_text(0, 60, 'font v. 3.1', font, color565(255, 255, 255), background=color565(0, 0, 255))
-
-def info(on = False, hover = False,temp = 0):
+def info(on = False, hover = False, temp = 0):
     bgColor = color565(0, 0, 255)
     tempColor = color565(255, 255, 255)
     text = 'START'
@@ -59,7 +52,7 @@ def graph():
     display.draw_text(110, 120, 't', ffont, timeColor)
     sumTi, sumTe = sumTT(stages)
     ti = 112 / sumTi
-    te = 78 / sumTe
+    te = 68 / sumTe
     x1 = 8
     y1 = 118
     z = [color565(255, 0, 0), color565(0, 255, 0), color565(0, 0, 255)]
@@ -68,14 +61,17 @@ def graph():
         x2 = x1 + math.floor(ti * time)
         y2 = y1 - math.floor(te * temp)
         display.draw_line(x1, y1, x2, y2, z[i])
-        display.draw_text(x1 + math.floor((x2 - x1) / 2), y2 - 12, str(time), ffont, timeColor)
-        display.draw_text(x1 + math.floor((x2 - x1) / 2), y2 - 3, str(temp), ffont, tempColor)
+        display.draw_text(x1 + math.floor((x2 - x1) / 2), y2 - 16, str(time), ffont, timeColor)
+        display.draw_text(x1 + math.floor((x2 - x1) / 2), y2 - 7, str(temp), ffont, tempColor)
         # print('----------------------------')
         # print('x1, y1', [x1, y1])
         # print('x2, y2', [x2, y2])
         # print('----------------------------')
         x1, y1 = x2, y2
+    display.contrast(15)
 
+def run():
+    info(on = True, hover = True, temp = 320)
+    graph()
 
-info(on = True, hover = True, temp = 320)
-graph()
+run()
