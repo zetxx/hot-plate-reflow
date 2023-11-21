@@ -3,17 +3,17 @@ from sysfont import sysfont
 from machine import SPI,Pin
 import time
 import math
-# SCK(CLK)    IO 14    IO 18
-# SDA(MOSI)   IO 13    IO 23
-# RST(RES)    IO 17    IO 04
-# A0(DC)      IO 16    IO 02
-# CS          IO 18    IO 15
+# SCK(CLK,SCL)    IO 14    IO 15
+# SDA(MOSI)       IO 13    IO 02.
+# RST(RES)        IO 17    IO 04.
+# A0(DC)          IO 16    IO 05.
+# CS              IO 18    IO 13.
+# !miso           IO 12    IO 35
 # 
 # 
-# 
-spi = SPI(2, baudrate=20000000, polarity=0, phase=0, sck=Pin(18), mosi=Pin(23), miso=Pin(12))
-tft=TFT(spi,2,4,15)
-tft.initr()
+spi = SPI(2, baudrate=20000000, polarity=0, phase=0, sck=Pin(15), mosi=Pin(2), miso=Pin(35))
+tft=TFT(spi,5,4,13)
+tft.initb2()
 tft.rgb(True)
 
 def testlines(color):
@@ -166,6 +166,9 @@ def test_main():
     time.sleep_ms(500)
 
 test_main()
+# tft.fill(TFT.BLACK);
+# tft.fill(TFT.RED);
+
 # from time import sleep
 # from ssd1351 import Display, color565
 # from machine import Pin, SPI
