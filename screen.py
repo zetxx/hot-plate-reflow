@@ -4,7 +4,7 @@ from machine import SPI,Pin
 import time
 import math
 # no use GPIOs 12, 0, 2, 4, 15, 5
-# SCK(CLK,SCL)    IO 14    IO 14
+# SCK(CLK,SCL)    IO 14    IO 32
 # SDA(MOSI)       IO 13    IO 27
 # RST(RES)        IO 17    IO 26
 # A0(DC)          IO 16    IO 25
@@ -12,7 +12,7 @@ import math
 # !miso           IO 12    IO 35
 # 
 # 
-spi = SPI(2, baudrate=20000000, polarity=0, phase=0, sck=Pin(14), mosi=Pin(27), miso=Pin(35))
+spi = SPI(2, baudrate=20000000, polarity=0, phase=0, sck=Pin(32), mosi=Pin(27), miso=Pin(35))
 tft=TFT(spi,25,26,33)
 tft.initb2()
 tft.rgb(True)
