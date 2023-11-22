@@ -3,12 +3,13 @@ from sysfont import sysfont
 from machine import SPI,Pin
 import time
 import math
-# SCK(CLK,SCL)    IO 14    IO 15
-# SDA(MOSI)       IO 13    IO 02.
-# RST(RES)        IO 17    IO 04.
-# A0(DC)          IO 16    IO 05.
-# CS              IO 18    IO 13.
-# !miso           IO 12    IO 35
+# no use GPIOs 12, 0, 2, 4, 15, 5
+# SCK(CLK,SCL)    IO 14    IO 15.14
+# SDA(MOSI)       IO 13    IO 02.27
+# RST(RES)        IO 17    IO 04.26
+# A0(DC)          IO 16    IO 05.25
+# CS              IO 18    IO 13.33
+# !miso           IO 12    IO 35.32
 # 
 # 
 spi = SPI(2, baudrate=20000000, polarity=0, phase=0, sck=Pin(15), mosi=Pin(2), miso=Pin(35))
@@ -50,7 +51,7 @@ def info(on = False, hover = False, temp = 0):
 #     return [time, temp]
 
 def graph():
-#     # items of items of time, temp
+    # items of items of time, temp
     stages = [[100, 40], [30, 200], [120, 210]]
     tempColor = TFT.color(255, 169, 169)
     timeColor = TFT.color(255, 255, 255)
