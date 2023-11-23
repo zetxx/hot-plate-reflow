@@ -3,7 +3,7 @@ from lib.sysfont import sysfont
 from machine import SPI,Pin
 import time
 import math
-# no use GPIOs 12, 0, 2, 4, 15, 5
+# no use GPIOs 12, 0, 2, 4, 15, 5 (0,2, and 12)
 # SCK(CLK,SCL)    IO 14    IO 32
 # SDA(MOSI)       IO 13    IO 27
 # RST(RES)        IO 17    IO 26
