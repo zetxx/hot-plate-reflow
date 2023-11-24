@@ -2,9 +2,8 @@
 # https://www.keebtalk.com/t/how-to-wire-a-rotary-encoder-fit-in-a-matrix/6330
 
 import time
-from machine import Pin
 from lib.rotary_irq_esp import RotaryIRQ
-from lib.button import Button
+from lib.button import debouncer
 
 r = RotaryIRQ(pin_num_clk=13,
               pin_num_dt=14,
@@ -14,4 +13,4 @@ def rotaryPrint():
     print(r.value())
 
 r.add_listener(rotaryPrint)
-Button(pinnum=15, callback=lambda p:print(time.time()))
+debouncer(15, cb=lambda p:print(time.time()))
