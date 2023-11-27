@@ -9,8 +9,8 @@ r = RotaryIRQ(pin_num_clk=13,
               pin_num_dt=14,
               reverse=True)
 def rotaryPrint():
-    print('rotary')
     print(r.value())
 
-r.add_listener(rotaryPrint)
-debouncer(15, cb=lambda p:print(time.time()))
+def run(cb):
+    r.add_listener(lambda: cb('rotary', r.value()))
+    debouncer(15, cb=lambda:cb('button', 1))
