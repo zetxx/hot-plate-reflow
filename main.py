@@ -1,4 +1,4 @@
-import example
+import screen
 # import rotary
 
 # state = {
@@ -9,3 +9,4 @@ import example
 #     print(t, value)
 # rotary.run(rotaryButtonCb)
 
+screen.init()
